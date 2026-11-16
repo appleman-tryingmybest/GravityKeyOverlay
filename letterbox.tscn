@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://p7eswascsg4h"]
+
+[ext_resource type="Script" uid="uid://c1mcjvnrn1xvw" path="res://letterbox.gd" id="1_8uw1c"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8uw1c"]
+friction = 0.25
+rough = true
+bounce = 0.3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojnr2"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+anti_aliasing = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojnr2"]
+size = Vector2(30, 30)
+
+[node name="letterbox" type="RigidBody2D" unique_id=244180625]
+physics_material_override = SubResource("PhysicsMaterial_8uw1c")
+script = ExtResource("1_8uw1c")
+
+[node name="ColorRect" type="PanelContainer" parent="." unique_id=547472545]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ojnr2")
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1567698042]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=586522433]
+shape = SubResource("RectangleShape2D_ojnr2")
+
+[node name="Timer" type="Timer" parent="." unique_id=126819270]
+wait_time = 15.0
+one_shot = true
+autostart = true
+ignore_time_scale = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1535036027]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=368384996]
+shape = SubResource("RectangleShape2D_ojnr2")
+
+[connection signal="resized" from="ColorRect" to="." method="_on_color_rect_resized"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

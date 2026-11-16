@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="Script" uid="uid://crtdv5djku0ij" path="res://main.gd" id="1_ig7tw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ojnr2"]
+
+[node name="main" type="Node2D" unique_id=911088694]
+script = ExtResource("1_ig7tw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1819764364]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2099367627]
+position = Vector2(0, 328)
+shape = SubResource("WorldBoundaryShape2D_ojnr2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=326174615]
+position = Vector2(-576, 0)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_ojnr2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1866990242]
+position = Vector2(576, 0)
+rotation = 4.712389
+shape = SubResource("WorldBoundaryShape2D_ojnr2")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1724041160]
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1762342069]
+position = Vector2(0, -384)
+gizmo_extents = 132.8
