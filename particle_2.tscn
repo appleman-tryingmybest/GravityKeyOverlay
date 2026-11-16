@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://df3w225bvfoit"]
+
+[ext_resource type="Texture2D" uid="uid://bbn65kplafupd" path="res://white.png" id="1_brvio"]
+[ext_resource type="Script" uid="uid://da02xxw260pel" path="res://particle_2.gd" id="2_hrpvq"]
+
+[sub_resource type="Curve" id="Curve_hrpvq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_547df"]
+curve = SubResource("Curve_hrpvq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pxd2d"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 25.0
+angle_min = -44.99999
+angle_max = 45.00001
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 61.539997
+gravity = Vector3(0, -25, 0)
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_547df")
+turbulence_enabled = true
+turbulence_noise_strength = 6.49
+turbulence_noise_scale = 0.319
+turbulence_noise_speed = Vector3(0, -20, 0)
+turbulence_noise_speed_random = 0.59
+turbulence_influence_min = 0.072000004
+turbulence_influence_max = 0.120000005
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.5
+collision_use_scale = true
+
+[node name="particle2" type="GPUParticles2D" unique_id=1637086539]
+emitting = false
+amount = 10
+texture = ExtResource("1_brvio")
+lifetime = 2.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.54
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_pxd2d")
+script = ExtResource("2_hrpvq")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -1,25 +1,16 @@
 [gd_scene format=3 uid="uid://c3xbkdnkbs0e7"]
 
 [ext_resource type="Script" uid="uid://c18iqm5reernq" path="res://particle.gd" id="1_kgu82"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_mqde4"]
-frequency = 0.135
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g4stu"]
-width = 35
-height = 35
-generate_mipmaps = false
-noise = SubResource("FastNoiseLite_mqde4")
-seamless_blend_skirt = 0.0
+[ext_resource type="Texture2D" uid="uid://bbn65kplafupd" path="res://white.png" id="1_pxd2d"]
 
 [sub_resource type="Curve" id="Curve_kgu82"]
-_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+_data = [Vector2(0, 1), 0.0, -1.251009, 0, 1, Vector2(1, 0), -0.6958362, 0.0, 1, 0]
 point_count = 2
 
 [node name="particle" type="CPUParticles2D" unique_id=1959798115]
 emitting = false
-amount = 7
-texture = SubResource("NoiseTexture2D_g4stu")
+amount = 10
+texture = ExtResource("1_pxd2d")
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
@@ -33,8 +24,7 @@ gravity = Vector2(0, -10)
 initial_velocity_max = 25.0
 angular_velocity_min = -45.0
 angular_velocity_max = 45.0
-scale_amount_min = 0.07
-scale_amount_max = 0.4
+scale_amount_min = 0.2
 scale_amount_curve = SubResource("Curve_kgu82")
 script = ExtResource("1_kgu82")
 

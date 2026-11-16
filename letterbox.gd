@@ -5,7 +5,7 @@ var text : String
 @onready var col = $CollisionShape2D
 @onready var areaCol = $Area2D/CollisionShape2D
 
-var particle = preload("res://particle.tscn")
+var particle = preload("res://particle_2.tscn")
 var sound1 = preload("res://sounds/impact.ogg")
 var sound2 = preload("res://sounds/impact2.ogg")
 

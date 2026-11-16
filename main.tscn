@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cqow47bch5ocs"]
 
 [ext_resource type="Script" uid="uid://crtdv5djku0ij" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://df3w225bvfoit" path="res://particle_2.tscn" id="2_0xm2m"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ojnr2"]
 
@@ -24,3 +25,6 @@ rotation = 4.712389
 shape = SubResource("WorldBoundaryShape2D_ojnr2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1724041160]
+
+[node name="particle2" parent="." unique_id=1637086539 instance=ExtResource("2_0xm2m")]
+position = Vector2(584, -464)
