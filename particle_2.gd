@@ -2,7 +2,6 @@ extends GPUParticles2D
 
 @onready var poof = preload("res://sounds/poof.ogg")
 
-var pos = Vector2.ZERO
 
 func _ready() -> void:
 	emitting = true

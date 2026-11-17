@@ -30,9 +30,6 @@ turbulence_noise_speed = Vector3(0, -20, 0)
 turbulence_noise_speed_random = 0.59
 turbulence_influence_min = 0.072000004
 turbulence_influence_max = 0.120000005
-collision_mode = 1
-collision_friction = 0.0
-collision_bounce = 0.5
 collision_use_scale = true
 
 [node name="particle2" type="GPUParticles2D" unique_id=1637086539]

@@ -21,6 +21,8 @@ size = Vector2(30, 30)
 
 [node name="letterbox" type="RigidBody2D" unique_id=244180625]
 physics_material_override = SubResource("PhysicsMaterial_8uw1c")
+contact_monitor = true
+max_contacts_reported = 2
 script = ExtResource("1_8uw1c")
 
 [node name="ColorRect" type="PanelContainer" parent="." unique_id=547472545]

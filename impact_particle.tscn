@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ct50pjiblkadw"]
+
+[ext_resource type="Texture2D" uid="uid://bbn65kplafupd" path="res://white.png" id="1_5cxdl"]
+[ext_resource type="Script" uid="uid://b74hyerqmaqds" path="res://impact_particle.gd" id="2_q3s64"]
+
+[sub_resource type="Curve" id="Curve_5cxdl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ohm3s"]
+curve = SubResource("Curve_5cxdl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ojnr2"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 12.0
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 123.079994
+gravity = Vector3(0, 100, 0)
+scale_curve = SubResource("CurveTexture_ohm3s")
+turbulence_enabled = true
+turbulence_noise_strength = 6.32
+turbulence_noise_speed = Vector3(0, 35, 0)
+turbulence_noise_speed_random = 1.3
+turbulence_influence_max = 0.508
+collision_use_scale = true
+
+[node name="impact_particle" type="GPUParticles2D" unique_id=195822911]
+modulate = Color(0.4390491, 0.43904912, 0.43904912, 0.7058824)
+emitting = false
+amount = 2
+texture = ExtResource("1_5cxdl")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 13.67
+process_material = SubResource("ParticleProcessMaterial_ojnr2")
+script = ExtResource("2_q3s64")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

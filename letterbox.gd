@@ -6,8 +6,12 @@ var text : String
 @onready var areaCol = $Area2D/CollisionShape2D
 
 var particle = preload("res://particle_2.tscn")
+var impact_particle = preload("res://impact_particle.tscn")
 var sound1 = preload("res://sounds/impact.ogg")
 var sound2 = preload("res://sounds/impact2.ogg")
+
+var contact_position : Vector2
+var allow_impact = false
 
 func _ready() -> void:
 	$ColorRect/Label.text = text
@@ -17,6 +21,14 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	queue_free()
 
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if state.get_contact_count() > 0:
+		allow_impact = true
+		contact_position = state.get_contact_local_position(0)
+		print ("getting contact point ", contact_position)
+	else:
+		allow_impact = false
+
 func _on_color_rect_resized() -> void:
 	if $ColorRect.size != Vector2(30.0, 30.0):
 		col.shape = col.shape.duplicate()
@@ -25,12 +37,17 @@ func _on_color_rect_resized() -> void:
 		areaCol.shape.size = $ColorRect.size
 
 func _exit_tree() -> void:
-	var spawn = particle.instantiate()
+	_spawn(particle, global_position)
+
+func _spawn(item, vectorPos: Vector2):
+	var spawn = item.instantiate()
 	get_parent().call_deferred("add_child", spawn)
-	spawn.global_position = global_position
+	spawn.global_position = vectorPos
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	#print(body.name, "hit at", to_global(contact_position))
 	if body != self:
+		_spawn(impact_particle, contact_position)
 		if randi_range(0, 1) == 0:
 			play_sound(sound1)
 		else:
