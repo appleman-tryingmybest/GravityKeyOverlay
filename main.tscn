@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://crtdv5djku0ij" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://df3w225bvfoit" path="res://particle_2.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ct50pjiblkadw" path="res://impact_particle.tscn" id="3_h2yge"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ojnr2"]
 
@@ -28,3 +29,6 @@ shape = SubResource("WorldBoundaryShape2D_ojnr2")
 
 [node name="particle2" parent="." unique_id=1637086539 instance=ExtResource("2_0xm2m")]
 position = Vector2(584, -464)
+
+[node name="impact_particle" parent="." unique_id=195822911 instance=ExtResource("3_h2yge")]
+position = Vector2(608, -480)
